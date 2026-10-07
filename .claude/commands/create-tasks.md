@@ -45,6 +45,7 @@ Plus the full description of the first Story as a sample. Then ask:
 
 Order: Stories → Sub-tasks (with parent) → issue links (`Blocked by`, link to source ticket).
 
+- Create in parallel batches: issue **all** Story create calls in one message, then all Sub-task calls (once their parent keys exist) in one message, then all link calls in one message. Wait for a batch to finish before starting the next. Exception: the Jira direction check on the first `Blocks` link (see `providers/jira.md`) runs before the remaining links.
 - Add label `ai-planned` to every issue.
 - Description ends with `Covers: FR-…` and `Source: <source key/URL>`.
 - On an error, stop, report what was created so far and what failed, and ask how to continue. Do not retry blindly and do not delete anything.

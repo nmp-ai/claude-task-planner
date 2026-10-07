@@ -9,7 +9,7 @@ Tools come from the Atlassian connector. Tool names below are the base names; th
 | Get `cloudId` / site | `getAccessibleAtlassianResources` |
 | Read source ticket | `getJiraIssue` |
 | Issue types of a project | `getJiraProjectIssueTypesMetadata` |
-| Fields of an issue type (find story point field, required fields) | `getJiraIssueTypeMetaWithFields` |
+| Fields of an issue type (find story point field, required fields) | `getJiraIssueTypeMetaWithFields` — large response: call it **once, for the Story type only**; do not call it for Sub-task (hours use `timetracking`) |
 | Duplicate search | `searchJiraIssuesUsingJql` |
 | Create issue | `createJiraIssue` |
 | Update issue (approved "update" actions only) | `editJiraIssue` |
@@ -68,8 +68,10 @@ Skip the `Relates` link when the source ticket is already the Story's parent. Af
 
 ## Duplicate search (JQL)
 
+Run these in parallel. Combine all Story titles into **one** summary query with `OR`, not one query per Story.
+
 ```
 project = <KEY> AND labels = ai-planned AND issue in linkedIssues(<SOURCE-KEY>)
 project = <KEY> AND parent = <PARENT-KEY>
-project = <KEY> AND summary ~ "<distinctive words from title>" AND statusCategory != Done
+project = <KEY> AND statusCategory != Done AND (summary ~ "<words from S1>" OR summary ~ "<words from S2>" OR …)
 ```

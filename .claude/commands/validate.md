@@ -38,5 +38,5 @@ Run every check below and report findings. Do not silently fix anything.
 ```
 
 - **ERROR** blocks creation; **WARN** does not.
-- If there are findings, offer to apply the suggested fixes and show the revised breakdown.
+- If there are findings, offer to apply the suggested fixes. When applied, show **only the changed rows and Stories** (plus updated totals/coverage if they changed), not the whole breakdown.
 - If PASS (or only WARN), ask the user to approve and run `/create-tasks <jira|linear> <PROJECT_KEY|TEAM>`.
