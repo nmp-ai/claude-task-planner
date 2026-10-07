@@ -61,18 +61,18 @@ FR-004 updated: IF a reset link is older than 30 minutes or already used THEN TH
 
 ## `/breakdown` output (abridged)
 
-| Ref | Type | Title | Priority | SP | Hours | Covers | Blocked by |
-|---|---|---|---|---|---|---|---|
-| S1 | Story | [Auth] Allow users to reset password via email link on web | P1 | 5 | 19 | FR-001…FR-005, NFR-001, NFR-002 | – |
-| S1.1 | Sub-task | DB: Add password_reset_tokens table | | | 2 | | – |
-| S1.2 | Sub-task | BE: Add POST /auth/password-reset/request endpoint | | | 4 | | S1.1 |
-| S1.3 | Sub-task | BE: Add POST /auth/password-reset/confirm endpoint | | | 5 | | S1.1 |
-| S1.4 | Sub-task | [P] FE: Build Forgot password and Reset password pages | | | 5 | | – |
-| S1.5 | Sub-task | QA: Add E2E tests for reset flow | | | 3 | | S1.2, S1.3, S1.4 |
-| S2 | Story | [Auth] Open password reset links in the mobile app | P2 | 3 | 10 | FR-003 | S1 |
-| S2.1 | Sub-task | [P] Mobile: Configure deep links for reset URL | | | 4 | | – |
-| S2.2 | Sub-task | [P] Mobile: Build Reset password screen | | | 4 | | – |
-| S2.3 | Sub-task | QA: Test deep link on iOS and Android | | | 2 | | S2.1, S2.2 |
+| Ref | Type | Title | Priority | SP | Hours | Parallel | Covers | Blocked by |
+|---|---|---|---|---|---|---|---|---|
+| S1 | Story | [Auth] Allow users to reset password via email link on web | P1 | 5 | 19 | | FR-001…FR-005, NFR-001, NFR-002 | – |
+| S1.1 | Sub-task | DB: Add password_reset_tokens table | | | 2 | | | – |
+| S1.2 | Sub-task | BE: Add POST /auth/password-reset/request endpoint | | | 4 | | | S1.1 |
+| S1.3 | Sub-task | BE: Add POST /auth/password-reset/confirm endpoint | | | 5 | | | S1.1 |
+| S1.4 | Sub-task | FE: Build Forgot password and Reset password pages | | | 5 | [P] | | – |
+| S1.5 | Sub-task | QA: Add E2E tests for reset flow | | | 3 | | | S1.2, S1.3, S1.4 |
+| S2 | Story | [Auth] Open password reset links in the mobile app | P2 | 3 | 10 | | FR-003 | S1 |
+| S2.1 | Sub-task | Mobile: Configure deep links for reset URL | | | 4 | [P] | | – |
+| S2.2 | Sub-task | Mobile: Build Reset password screen | | | 4 | [P] | | – |
+| S2.3 | Sub-task | QA: Test deep link on iOS and Android | | | 2 | | | S2.1, S2.2 |
 
 **Totals:** P1 5 SP / 19h · P2 3 SP / 10h · Overall 8 SP / 29h
 

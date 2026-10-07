@@ -18,24 +18,53 @@ Tools come from the Atlassian connector. Tool names below are the base names; th
 
 If more than one Atlassian site is accessible, ask which one to use.
 
-## Field mapping
+## Field mapping (`createJiraIssue`)
 
-| Planner field | Jira field | Notes |
+Top-level parameters: `cloudId`, `projectKey`, `issueTypeName`, `summary`, `description`, `contentFormat`, `parent`. Every other field goes inside **`additional_fields`**.
+
+| Planner field | Parameter | Notes |
 |---|---|---|
-| Story | issue type `Story` | |
-| Bug | issue type `Bug` | |
-| Sub-task | issue type `Sub-task` / `Subtask` | Name varies per project; take it from issue type metadata (`subtask: true`) |
-| Title | `summary` | |
-| Description | `description` | Markdown from the template |
-| Parent (Story → Epic, Sub-task → Story) | `parent: { key }` | |
-| Priority P1 / P2 / P3 | `priority.name` = `High` / `Medium` / `Low` | Use the project's actual priority names if they differ |
-| Story points | custom field named `Story point estimate` (team-managed) or `Story Points` (company-managed) | Discover the `customfield_xxxxx` id via field metadata; never hard-code |
-| Hours (Sub-task) | `timetracking.originalEstimate` e.g. `"4h"`, `"30m"` | Requires time tracking enabled on the project |
-| Labels | `labels: ["ai-planned", …]` | |
-| Blocked by | link type `Blocks` (inward: "is blocked by") | Create after all issues exist |
-| Source ticket | link type `Relates` | Skip if the source is already the parent |
+| Story | `issueTypeName: "Story"` | |
+| Bug | `issueTypeName: "Bug"` | |
+| Sub-task | `issueTypeName: "Sub-task"` / `"Subtask"` | Name varies per project; take it from issue type metadata (`subtask: true`) |
+| Title | `summary` | Plain title only — no `[P]`, refs (`S1.2`), or priority markers |
+| Description | `description` + `contentFormat: "markdown"` | Markdown from the template |
+| Parent (Story → Epic, Sub-task → Story) | `parent: "ABC-123"` | Issue key as a string |
+| Priority P1 / P2 / P3 | `additional_fields.priority = { "name": "High" \| "Medium" \| "Low" }` | Use the project's actual priority names if they differ |
+| Story points | `additional_fields.customfield_xxxxx = 5` | Field is named `Story point estimate` (team-managed) or `Story Points` (company-managed); discover the id via `getJiraIssueTypeMetaWithFields`, never hard-code |
+| Hours (Sub-task) | `additional_fields.timetracking = { "originalEstimate": "4h" }` | `"30m"` for 0.5h; requires time tracking on the project |
+| Labels | `additional_fields.labels = ["ai-planned", …]` | |
+
+Example (Sub-task):
+
+```json
+{
+  "cloudId": "<cloudId>",
+  "projectKey": "ABC",
+  "issueTypeName": "Subtask",
+  "parent": "ABC-101",
+  "summary": "BE: Add POST /auth/password-reset/request endpoint",
+  "contentFormat": "markdown",
+  "description": "…",
+  "additional_fields": {
+    "labels": ["ai-planned"],
+    "timetracking": { "originalEstimate": "4h" }
+  }
+}
+```
 
 If a field is not on the create screen, create the issue without it and report it in the final summary.
+
+## Links (`createIssueLink`)
+
+Create links only after all issues exist.
+
+| Planner relation | `type` | `inwardIssue` | `outwardIssue` |
+|---|---|---|---|
+| A `Blocked by` B | `Blocks` | **B** (the blocker) | **A** (the blocked issue) |
+| Story ↔ source ticket | `Relates` | Story | source ticket |
+
+Skip the `Relates` link when the source ticket is already the Story's parent. After the first `Blocks` link, read one issue back with `getJiraIssue` to confirm the direction before creating the rest.
 
 ## Duplicate search (JQL)
 

@@ -15,7 +15,7 @@ Follow `.claude/skills/task-writing/SKILL.md` and the templates in `templates/`.
 - Slice Stories **vertically** (each delivers user-visible, testable value). Avoid "FE story" / "BE story" splits; use Sub-tasks for that.
 - Priority P1/P2/P3. P1 Stories together form the MVP.
 - Every Story: `Covers: FR-…`, acceptance criteria in Given/When/Then, story points (1/2/3/5/8/13).
-- Every Sub-task: one owner-sized unit of work, hours (0.5–16h), `[P]` if parallelizable, `Blocked by:` when ordered.
+- Every Sub-task: one owner-sized unit of work, hours (0.5–16h), `[P]` in the Parallel column if parallelizable (never in the title), `Blocked by:` when ordered.
 - Include Sub-tasks for tests and, when relevant, migration, feature flag, docs, and release steps.
 - Remaining `[NEEDS CLARIFICATION]` items: keep them visible in the affected Story's "Notes" and flag them in the summary.
 
@@ -23,10 +23,10 @@ Follow `.claude/skills/task-writing/SKILL.md` and the templates in `templates/`.
 
 1. **Overview table**
 
-| Ref | Type | Title | Priority | SP | Hours | Covers | Blocked by |
-|---|---|---|---|---|---|---|---|
-| S1 | Story | … | P1 | 5 | 14 | FR-001, FR-002 | – |
-| S1.1 | Sub-task | [P] … | | | 4 | | – |
+| Ref | Type | Title | Priority | SP | Hours | Parallel | Covers | Blocked by |
+|---|---|---|---|---|---|---|---|---|
+| S1 | Story | … | P1 | 5 | 14 | | FR-001, FR-002 | – |
+| S1.1 | Sub-task | … | | | 4 | [P] | | – |
 
 2. **Details** for each Story and its Sub-tasks, using the templates.
 3. **Totals**: SP and hours per priority and overall.

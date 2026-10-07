@@ -12,8 +12,9 @@ All task content is written in **English**.
 - Story: `[Area] <Verb> <object> <qualifier>` — e.g. `[Checkout] Allow guest users to pay with saved card`
 - Bug: `[Area] <What is wrong> when <condition>` — e.g. `[Auth] Login fails with 500 when email contains "+"`
 - Sub-task: `<Layer>: <Verb> <object>` — e.g. `BE: Add POST /orders/guest endpoint`
-  - Layers: `FE`, `BE`, `DB`, `API`, `QA`, `Infra`, `Docs`, `Design`
+  - Layers: `FE`, `BE`, `Mobile`, `DB`, `API`, `QA`, `Infra`, `Docs`, `Design`, `Spike`
 - ≤ 80 characters, imperative mood, no trailing period, no ticket keys in the title.
+- Planning markers (`[P]`, refs like `S1.2`, priority) never go in the title; they live in their own columns/fields.
 
 ## Description
 

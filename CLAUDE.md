@@ -34,7 +34,7 @@ Each step builds on the previous step's output **in this conversation**. Nothing
   - Sub-task → **hours** (0.5h–16h). >16h → split the Sub-task.
   - Show the Story's total hours (sum of its Sub-tasks) in previews; do not set hours on the Story itself.
 - **Priority:** P1 (MVP, must have) / P2 (should have) / P3 (nice to have). Each Story must be independently testable and deliverable.
-- **Parallelism:** mark Sub-tasks that can run in parallel with `[P]`; express ordering with `Blocked by: <ref>`.
+- **Parallelism:** mark Sub-tasks that can run in parallel with `[P]` in the `Parallel` column (never in the title); express ordering with `Blocked by: <ref>`.
 - **Label:** every created issue gets the label `ai-planned`.
 - **Project key / team is passed on every `/create-tasks` run.** There is no default project.
 

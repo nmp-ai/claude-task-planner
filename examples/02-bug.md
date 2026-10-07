@@ -50,11 +50,11 @@ Bug — existing behavior is incorrect.
 
 ## `/breakdown` output (after clarification: "checkout recalculates server-side, no wrong charges")
 
-| Ref | Type | Title | Priority | SP | Hours | Covers | Blocked by |
-|---|---|---|---|---|---|---|---|
-| B1 | Bug | [Cart] Total not updated when quantity changes with discount applied | P1 | 2 | 5 | FR-001, FR-002 | – |
-| B1.1 | Sub-task | FE: Recalculate discount on cart quantity change | | | 3 | | – |
-| B1.2 | Sub-task | QA: Add regression test for discount + quantity change | | | 2 | | B1.1 |
+| Ref | Type | Title | Priority | SP | Hours | Parallel | Covers | Blocked by |
+|---|---|---|---|---|---|---|---|---|
+| B1 | Bug | [Cart] Total not updated when quantity changes with discount applied | P1 | 2 | 5 | | FR-001, FR-002 | – |
+| B1.1 | Sub-task | FE: Recalculate discount on cart quantity change | | | 3 | | | – |
+| B1.2 | Sub-task | QA: Add regression test for discount + quantity change | | | 2 | | | B1.1 |
 
 **Severity:** Major (display only; server-side checkout is correct)
 
