@@ -55,6 +55,10 @@ Example (Sub-task):
 
 If a field is not on the create screen, create the issue without it and report it in the final summary.
 
+## Update mapping (`editJiraIssue`)
+
+Parameters: `cloudId`, `issueIdOrKey`, `fields`, `contentFormat: "markdown"`. Unlike create, **all** fields go inside `fields` (no `additional_fields`): `summary`, `description`, `priority`, `labels`, `customfield_xxxxx` (story points), `timetracking`. Send only fields that change. Passing `null` clears a field — never do that unless it is in the approved diff. For `labels`, send the full list (existing labels + `ai-planned`).
+
 ## Links (`createIssueLink`)
 
 Create links only after all issues exist.

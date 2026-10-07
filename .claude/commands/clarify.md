@@ -1,5 +1,5 @@
 ---
-description: Resolve open questions in the current spec with up to 5 targeted questions
+description: Resolve open questions in the current spec, in rounds of up to 5 questions, until none are left
 argument-hint: [answers or extra context]
 ---
 
@@ -17,8 +17,10 @@ Extra input: $ARGUMENTS
 4. When the user answers, output **only the changes** to the spec (do not repeat unchanged sections):
    - Each changed or new FR/NFR/assumption in full, with its ID (answers folded in, no `[NEEDS CLARIFICATION]` left for answered items). Mark removed items as `FR-00x: removed — <reason>`.
    - A `### Clarifications` section: `Q → A` per item.
-   - Unanswered items kept as open questions or converted to explicit assumptions (say which).
+   - Unanswered items stay as open questions. Convert one to an explicit assumption only when the user says so.
    - The spec in effect is the `/analyze` output plus these changes. Output the full spec only if the user asks.
-5. Suggest `/breakdown` as the next step.
+5. **Repeat** steps 1–4 (each round ≤ 5 questions, including new gaps raised by the answers) until no `[NEEDS CLARIFICATION]` is left. Show `Open questions remaining: N` at the end of each round.
+6. Stop early only when the user says so (e.g. "enough", "đủ rồi"). Then list every remaining item and ask whether to convert each to an explicit assumption or keep it open. Any item kept open will block `/create-tasks` (see `/validate`).
+7. When nothing is open, suggest `/breakdown` as the next step.
 
 Do not create or edit anything in Jira/Linear.

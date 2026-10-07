@@ -15,12 +15,13 @@ Inspired by Spec-Driven Development (GitHub Spec Kit, Kiro): EARS requirements, 
 
 ```
 /analyze ABC-123                 # or a URL, or pasted text
-/clarify                         # optional: answer up to 5 questions
+/clarify                         # answer questions in rounds of ≤5 until none are left
 /breakdown                       # Stories → Sub-tasks, SP + hours, P1/P2/P3
 /validate                        # coverage, contradictions, estimates
 /create-tasks jira ABC           # preview → you say "yes" → issues created
 /create-tasks linear ENG         # same for Linear
 /create-tasks jira ABC ABC-100   # attach Stories to parent ABC-100
+/update-tasks jira ABC ABC-101 ABC-102  # diff existing issues vs breakdown → "yes" → update
 ```
 
 ## Conventions
@@ -35,7 +36,7 @@ Inspired by Spec-Driven Development (GitHub Spec Kit, Kiro): EARS requirements, 
 | Path | Purpose |
 |---|---|
 | `CLAUDE.md` | Agent role, constitution, workflow, conventions |
-| `.claude/commands/` | `/analyze`, `/clarify`, `/breakdown`, `/validate`, `/create-tasks` |
+| `.claude/commands/` | `/analyze`, `/clarify`, `/breakdown`, `/validate`, `/create-tasks`, `/update-tasks` |
 | `.claude/skills/task-writing/` | Writing standard, Definition of Ready/Done |
 | `templates/` | Story, Bug, Sub-task templates |
 | `providers/` | Field mapping and MCP tools for Jira and Linear |

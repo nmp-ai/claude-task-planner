@@ -55,7 +55,7 @@ Use the matching template in `templates/`. Keep it scannable: short sections, bu
 - [ ] `Covers:` lists at least one FR/NFR
 - [ ] Estimate set (SP for Story, hours for Sub-task)
 - [ ] Dependencies (`Blocked by`) identified
-- [ ] No unresolved `[NEEDS CLARIFICATION]` on P1 items
+- [ ] No unresolved `[NEEDS CLARIFICATION]` on any item
 
 ## Definition of Done (included in every Story)
 

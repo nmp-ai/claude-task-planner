@@ -19,7 +19,9 @@ Run every check below and report findings. Do not silently fix anything.
 
 **Quality** (Definition of Ready from `.claude/skills/task-writing/SKILL.md`)
 - Titles follow the format; AC are Given/When/Then and measurable; no vague words.
-- No unresolved `[NEEDS CLARIFICATION]` on P1 Stories.
+
+**Open questions**
+- Any unresolved `[NEEDS CLARIFICATION]` in the spec or on any Story (any priority) is an **ERROR**. Suggested fix: run `/clarify`, or convert it to an explicit assumption if the user agrees.
 
 **Estimates**
 - Story SP in {1,2,3,5,8,13}; Sub-task hours in 0.5–16.
